@@ -1,0 +1,499 @@
+import java.util.Scanner;  
+
+public class Principal {  
+    public static void main(String[] args) {  
+        Biblioteca biblioteca = new Biblioteca();  
+        Scanner scanner = new Scanner(System.in);  
+        int opcao;  
+
+        do {  
+            System.out.println("\nMenu:");  
+            System.out.println("1 - Consultar Livros Disponíveis");  
+            System.out.println("2 - Emprestar Livro");  
+            System.out.println("0 - Sair");  
+            System.out.print("Escolha uma opção: ");  
+            opcao = scanner.nextInt();  
+            scanner.nextLine(); // Consumir a nova linha  
+
+            switch (opcao) {  
+                case 1:  
+                    biblioteca.consultarLivrosDisponiveis();  
+                    break;  
+
+                case 2:  
+                    System.out.print("Digite seu nome: ");  
+                    String nomeCliente = scanner.nextLine();  
+                    System.out.print("Digite seu contato: ");  
+                    String contatoCliente = scanner.nextLine();  
+                    Cliente cliente = new Cliente(nomeCliente, contatoCliente);  
+
+                    System.out.print("Digite o título do livro a ser emprestado: ");  
+                    String tituloEmprestar = scanner.nextLine();  
+                    biblioteca.emprestarLivro(tituloEmprestar, cliente);  
+                    break;  
+
+                case 0:  
+                    System.out.println("Saindo...");  
+                    break;  
+
+                default:  
+                    System.out.println("Opção inválida.");  
+                    break;  
+            }  
+        } while (opcao != 0);  
+
+        scanner.close();  
+    }  
+
+    adicionar livros 
+
+    import java.util.ArrayList;  
+
+public class Main {  
+    public static void main(String[] args) {  
+        // Criando o ArrayList original de livros  
+        ArrayList<Livro> listaLivros = new ArrayList<>();  
+        listaLivros.add(new Livro("Livro A", "Autor A"));  
+        listaLivros.add(new Livro("Livro B", "Autor B"));  
+        listaLivros.add(new Livro("Livro C", "Autor C"));  
+
+        // Criando o ArrayList para empréstimos  
+        ArrayList<Livro> listaEmprestimos = new ArrayList<>();  
+
+        // Exibindo as listas antes do empréstimo  
+        System.out.println("Lista de Livros Disponíveis: " + listaLivros);  
+        System.out.println("Lista de Empréstimos: " + listaEmprestimos);  
+
+        // Índice do livro que queremos emprestar  
+        int indiceParaEmprestar = 1; // por exemplo, o livro "Livro B"  
+
+        // Verificando se o índice é válido  
+        if (indiceParaEmprestar >= 0 && indiceParaEmprestar < listaLivros.size()) {  
+            // Removendo o livro da lista original e adicionando à lista de empréstimos  
+            Livro livroEmprestado = listaLivros.remove(indiceParaEmprestar);  
+            listaEmprestimos.add(livroEmprestado);  
+            System.out.println("Empréstimo realizado: " + livroEmprestado);  
+        } else {  
+            System.out.println("Índice inválido para o empréstimo.");  
+        }  
+
+        // Exibindo as listas após o empréstimo  
+        System.out.println("Lista de Livros Disponíveis após o empréstimo: " + listaLivros);  
+        System.out.println("Lista de Empréstimos após a adição: " + listaEmprestimos);  
+    }  
+}
+}
+
+verificacao 
+
+Scanner scanner = new Scanner(System.in);  
+
+        System.out.print("Digite seu nome: ");  
+        String nome = scanner.nextLine();  
+
+        // Verificando se a entrada está vazia  
+        if (nome.trim().isEmpty()) {  
+            System.out.println("Você não digitou seu nome.");  
+        } else {  
+            // Comparando a entrada com um valor específico (por exemplo, "Admin")  
+            if (nome.equalsIgnoreCase("Admin")) {  
+                System.out.println("Olá, Admin!");  
+            } else {  
+                System.out.println("Olá, " + nome + "!");  
+            }  
+        }  
+cadastro de clientes
+
+ 
+
+public class CadastraCliente {  
+    public static void main(String[] args) {  
+        
+        ArrayList<Cliente> clientes = new ArrayList<>();  
+        Scanner scanner = new Scanner(System.in);  
+        String continuar;  
+
+        do {  
+            System.out.print("Digite o nome do cliente: ");  
+            String nome = scanner.nextLine();  
+
+            // Verificando se o nome está vazio  
+            while (nome.trim().isEmpty()) {  
+                System.out.print("O nome não pode estar vazio. Digite o nome do cliente: ");  
+                nome = scanner.nextLine();  
+            }  
+
+            System.out.print("Digite o contato do cliente: ");  
+            String contato = scanner.nextLine();  
+
+            // Verificando se o contato está vazio  
+            while (contato.trim().isEmpty()) {  
+                System.out.print("O contato não pode estar vazio. Digite o contato do cliente: ");  
+                contato = scanner.nextLine();  
+            }  
+
+            // Criando um novo cliente  
+            Cliente cliente = new Cliente(nome, contato);  
+            clientes.add(cliente);  
+
+            System.out.println("Cliente cadastrado: " + cliente);  
+
+            System.out.print("Deseja cadastrar outro cliente? (s/n): ");  
+            continuar = scanner.nextLine().trim();  
+
+        } while (continuar.equalsIgnoreCase("s"));  
+
+        System.out.println("Clientes cadastrados:");  
+        for (Cliente c : clientes) {  
+            System.out.println(c);  
+        }  
+
+        scanner.close();  
+
+
+    }  
+}-
+
+
+                    System.out.println("Cliente cadastrado (s) ou (n)");
+                    String check = scanner.nextLine();
+
+                    if (check.trim().isEmpty()) {  
+                        System.out.println("precisa faser uma escolha.");  
+                    } else {  
+                        // Comparando a entrada com um valor específico (por exemplo, "Admin")  
+                        if (check.equalsIgnoreCase("s")) {  
+                            biblioteca.consultarLivrosDisponiveis();  
+                        } else if (check.equalsIgnoreCase("n")){  
+                            ArrayList<Cliente> clientes = new ArrayList<>();  
+        
+                                String continuar;  
+
+                                do {  
+                                    System.out.print("Digite o nome do cliente: ");  
+                                    String nome = scanner.nextLine();  
+
+                                    // Verificando se o nome está vazio  
+                                    while (nome.trim().isEmpty()) {  
+                                        System.out.print("O nome não pode estar vazio. Digite o nome do cliente: ");  
+                                        nome = scanner.nextLine();  
+                                    }  
+
+                                    System.out.print("Digite o contato do cliente: ");  
+                                    String contato = scanner.nextLine();  
+
+                                    // Verificando se o contato está vazio  
+                                    while (contato.trim().isEmpty()) {  
+                                        System.out.print("O contato não pode estar vazio. Digite o contato do cliente: ");  
+                                        contato = scanner.nextLine();  
+                                    }  
+
+                                    // Criando um novo cliente  
+                                    Cliente cliente = new Cliente(nome, contato);  
+                                    clientes.add(cliente);  
+
+                                    System.out.println("Cliente cadastrado: " + cliente);  
+
+                                    System.out.print("Deseja cadastrar outro cliente? (s/n): ");  
+                                    continuar = scanner.nextLine().trim();  
+
+                                        } while (continuar.equalsIgnoreCase("s"));  
+
+                                        System.out.println("Clientes cadastrados:");  
+                  
+                                        System.out.println("Clientes cadastrados:");  
+                                        
+                                        
+                                        
+
+
+
+                        }  
+                    }  
+
+
+                     
+                     trocando de ArrayList
+
+                     import java.util.ArrayList;  
+
+public class Main {  
+    public static void main(String[] args) {  
+        // Criando o ArrayList original  
+        ArrayList<String> listaOriginal = new ArrayList<>();  
+        listaOriginal.add("Produto A");  
+        listaOriginal.add("Produto B");  
+        listaOriginal.add("Produto C");  
+
+        // Criando o ArrayList de destino  
+        ArrayList<String> listaDestino = new ArrayList<>();  
+
+        // Exibindo as listas antes da movimentação  
+        System.out.println("Lista Original: " + listaOriginal);  
+        System.out.println("Lista Destino: " + listaDestino);  
+
+        // Retirando um produto da lista original e colocando na lista de destino  
+        String produtoParaMover = "Produto B"; // O produto que queremos mover  
+        if (listaOriginal.remove(produtoParaMover)) {  
+            listaDestino.add(produtoParaMover);  
+        } else {  
+            System.out.println("Produto não encontrado na lista original.");  
+        }  
+
+        // Exibindo as listas após a movimentação  
+        System.out.println("Lista Original após remoção: " + listaOriginal);  
+        System.out.println("Lista Destino após adição: " + listaDestino);  
+    }  
+}
+import java.util.ArrayList;  
+
+public class Main {  
+    public static void main(String[] args) {  
+        // Criando o ArrayList original de livros  
+        ArrayList<String> listaLivros = new ArrayList<>();  
+        listaLivros.add("Livro A");  
+        listaLivros.add("Livro B");  
+        listaLivros.add("Livro C");  
+
+        // Criando o ArrayList para empréstimos  
+        ArrayList<String> listaEmprestimos = new ArrayList<>();  
+
+        // Exibindo as listas antes do empréstimo  
+        System.out.println("Lista de Livros Disponíveis: " + listaLivros);  
+        System.out.println("Lista de Empréstimos: " + listaEmprestimos);  
+
+        // Índice do livro que queremos emprestar  
+        int indiceParaEmprestar = 1; // por exemplo, o livro "Livro B"  
+
+        // Verificando se o índice é válido  
+        if (indiceParaEmprestar >= 0 && indiceParaEmprestar < listaLivros.size()) {  
+            // Removendo o livro da lista original e adicionando à lista de empréstimos  
+            String livroEmprestado = listaLivros.remove(indiceParaEmprestar);  
+            listaEmprestimos.add(livroEmprestado);  
+            System.out.println("Empréstimo realizado: " + livroEmprestado);  
+        } else {  
+            System.out.println("Índice inválido para o empréstimo.");  
+        }  
+
+        // Exibindo as listas após o empréstimo  
+        System.out.println("Lista de Livros Disponíveis após o empréstimo: " + listaLivros);  
+        System.out.println("Lista de Empréstimos após a adição: " + listaEmprestimos);  
+    }  
+} 
+                     
+			lista completa  ///////////////////////
+
+
+            import java.util.ArrayList;  
+import java.util.Date;  
+import java.util.List;  
+import java.util.Calendar;  
+
+class Livro {  
+    private int id;  
+    private String autor;  
+    private String titulo;  
+    private boolean disponivel;  
+    private Date dataCadastro;  
+    private Date dataEntrega;  
+
+    public Livro(int id, String autor, String titulo) {  
+        this.id = id;  
+        this.autor = autor;  
+        this.titulo = titulo;  
+        this.disponivel = true; // Inicialmente, o livro está disponível  
+        this.dataCadastro = new Date();  
+        this.dataEntrega = calcularDataEntrega();  
+    }  
+
+    private Date calcularDataEntrega() {  
+        Calendar calendar = Calendar.getInstance();  
+        calendar.setTime(new Date());  
+        calendar.add(Calendar.DAY_OF_YEAR, 10); // 10 dias a partir de hoje  
+        return calendar.getTime();  
+    }  
+
+    public int getId() {  
+        return id;  
+    }  
+
+    public String getTitulo() {  
+        return titulo;  
+    }  
+
+    public boolean isDisponivel() {  
+        return disponivel;  
+    }  
+
+    public void marcarComoIndisponivel() {  
+        this.disponivel = false;  
+    }  
+
+    public void marcarComoDisponivel() {  
+        this.disponivel = true;  
+    }  
+
+    public Date getDataCadastro() {  
+        return dataCadastro;  
+    }  
+
+    public Date getDataEntrega() {  
+        return dataEntrega;  
+    }  
+}  
+
+class Cliente {  
+    private String nome;  
+    private List<Livro> livrosEmprestados;  
+
+    public Cliente(String nome) {  
+        this.nome = nome;  
+        this.livrosEmprestados = new ArrayList<>();  
+    }  
+
+    public String getNome() {  
+        return nome;  
+    }  
+
+    public void adicionarLivro(Livro livro) {  
+        livrosEmprestados.add(livro);  
+    }  
+
+    public void removerLivro(Livro livro) {  
+        livrosEmprestados.remove(livro);  
+    }  
+
+    public List<Livro> getLivrosEmprestados() {  
+        return livrosEmprestados;  
+    }  
+
+    public boolean temLivroEmprestado(Livro livro) {  
+        return livrosEmprestados.contains(livro);  
+    }  
+}  
+
+class Emprestimo {  
+    private Cliente cliente;  
+    private Livro livro;  
+
+    public Emprestimo(Cliente cliente, Livro livro) {  
+        this.cliente = cliente;  
+        this.livro = livro;  
+    }  
+
+    public Cliente getCliente() {  
+        return cliente;  
+    }  
+
+    public Livro getLivro() {  
+        return livro;  
+    }  
+}  
+
+class Biblioteca {  
+    private List<Livro> livros;  
+    private List<Cliente> clientes;  
+    private List<Emprestimo> emprestimos;  
+
+    public Biblioteca() {  
+        this.livros = new ArrayList<>();  
+        this.clientes = new ArrayList<>();  
+        this.emprestimos = new ArrayList<>();  
+    }  
+
+    public void adicionarLivro(Livro livro) {  
+        livros.add(livro);  
+    }  
+
+    public void cadastrarCliente(Cliente cliente) {  
+        clientes.add(cliente);  
+    }  
+
+    public Livro buscarLivro(int id) {  
+        for (Livro livro : livros) {  
+            if (livro.getId() == id) {  
+                return livro;  
+            }  
+        }  
+        return null;  
+    }  
+
+    public List<Livro> buscarLivrosEmprestados(Cliente cliente) {  
+        return cliente.getLivrosEmprestados();  
+    }  
+
+    public void emprestarLivro(Cliente cliente, int id) {  
+        Livro livro = buscarLivro(id);  
+        if (livro != null && livro.isDisponivel()) {  
+            if (clientes.contains(cliente)) {  
+                livro.marcarComoIndisponivel();  
+                cliente.adicionarLivro(livro);  
+                emprestimos.add(new Emprestimo(cliente, livro));  
+                System.out.println("Livro '" + livro.getTitulo() + "' emprestado com sucesso a " + cliente.getNome() + ".");  
+            } else {  
+                System.out.println("Cliente " + cliente.getNome() + " não cadastrado.");  
+            }  
+        } else {  
+            if (livro == null) {  
+                System.out.println("Livro com ID " + id + " não encontrado.");  
+            } else {  
+                System.out.println("Livro '" + livro.getTitulo() + "' não está disponível para empréstimo.");  
+            }  
+        }  
+    }  
+
+    public void devolverLivro(Cliente cliente, int id) {  
+        Livro livro = buscarLivro(id);  
+        if (livro != null && cliente.temLivroEmprestado(livro)) {  
+            livro.marcarComoDisponivel();  
+            cliente.removerLivro(livro);  
+            emprestimos.removeIf(emp -> emp.getLivro().equals(livro) && emp.getCliente().equals(cliente));  
+            System.out.println("Livro '" + livro.getTitulo() + "' devolvido com sucesso por " + cliente.getNome() + ".");  
+        } else {  
+            System.out.println("Livro '" + livro.getTitulo() + "' não está emprestado para " + cliente.getNome() + ".");  
+        }  
+    }  
+
+    public void listarLivros() {  
+        System.out.println("Livros cadastrados:");  
+        for (Livro livro : livros) {  
+            System.out.println("ID: " + livro.getId() + ", Título: " + livro.getTitulo() + ", Autor: " + livro.autor + ", Disponível: " + livro.isDisponivel());  
+        }  
+    }  
+}  
+
+// Exemplo de uso  
+public class Main {  
+    public static void main(String[] args) {  
+        Biblioteca biblioteca = new Biblioteca();  
+        
+        Livro livro1 = new Livro(1, "George Orwell", "1984");  
+        Livro livro2 = new Livro(2, "J.R.R. Tolkien", "O Senhor dos Anéis");  
+        
+        biblioteca.adicionarLivro(livro1);  
+        biblioteca.adicionarLivro(livro2);  
+        
+        Cliente cliente1 = new Cliente("Alice");  
+        biblioteca.cadastrarCliente(cliente1);  
+        
+        // Listar livros disponíveis  
+        biblioteca.listarLivros();  
+        
+        // Emprestando livro  
+        biblioteca.emprestarLivro(cliente1, 1);  
+        
+        // Tentando devolver livro  
+        biblioteca.devolverLivro(cliente1, 1);  
+        
+        // Tentando devolver livro novamente para verificar comportamento  
+        biblioteca.devolverLivro(cliente1, 1);  
+        
+        // Listar livros emprestados  
+        List<Livro> livrosEmprestados = biblioteca.buscarLivrosEmprestados(cliente1);  
+        System.out.println("Livros emprestados para " + cliente1.getNome() + ":");  
+        for (Livro livro : livrosEmprestados) {  
+            System.out.println(" - " + livro.getTitulo());  
+        }  
+    }  
+}  
+                    
